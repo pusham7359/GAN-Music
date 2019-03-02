@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 """GAN_TEST_ME.ipynb
 
@@ -24,7 +23,7 @@ import keras.backend as K
 from keras.layers import Dense, Activation, LeakyReLU, BatchNormalization
 from keras.layers import Conv2D, Conv2DTranspose, Reshape, Flatten
 from keras.models import Sequential
-from keras.optimizers import Adam
+from keras.optimizers import adam
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 # %matplotlib inline
@@ -191,9 +190,8 @@ for e in range(num_epoch):
         discriminator.train_on_batch(X_batch_real, y_train_real)
         discriminator.train_on_batch(X_batch_fake, y_train_fake)
         # train the generator via GAN
-        make_trainable(discriminator, False)
-        discriminator.compile(optimizer=Adam(lr=0.01, beta_1=d_beta_1), loss='binary_crossentropy')
-        
+        #make_trainable(discriminator, False)
+        #discriminator.compile(optimizer=Adam(lr=d_learning_rate, beta_1=d_beta_1), loss='binary_crossentropy')
         gan.train_on_batch(np.random.normal(loc=0, scale=1, size=(batchSize, 100)), y_train_real)
 
     # evaluate
